@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198080493114412174}
   - component: {fileID: 199850884302673448}
   m_Layer: 0
-  m_Name: BloodSquirt
+  m_Name: HitSquirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9764706, g: 0.101960786, b: 0.101960786, a: 1}
+      maxColor: {r: 0.5019608, g: 1, b: 0.08235294, a: 1}
       minMaxState: 0
     startSize:
       scalar: 40
