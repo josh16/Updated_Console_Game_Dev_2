@@ -8,7 +8,7 @@ public class PlayerHealth : NetworkBehaviour {
 
 	//Health variables
 	public const int maxHealth = 100;
-	public const int healthPack = 20;
+	public const int healthPack = 60;
 
 
 	//Health Audio
@@ -95,6 +95,11 @@ public class PlayerHealth : NetworkBehaviour {
 		currentHealth = maxHealth;
 	}
 
+    void Update()
+    {
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+    }
 
 
 }
