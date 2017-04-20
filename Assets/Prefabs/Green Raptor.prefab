@@ -590,21 +590,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1479890421790290
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4964301595720210}
-  m_Layer: 0
-  m_Name: BloodSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1484696603610672
 GameObject:
   m_ObjectHideFlags: 1
@@ -720,6 +705,21 @@ GameObject:
   - component: {fileID: 4986850596949580}
   m_Layer: 0
   m_Name: upper_leg.L
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1612074281687830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4419676322342430}
+  m_Layer: 0
+  m_Name: BloodSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1232,6 +1232,19 @@ Transform:
   m_Children:
   - {fileID: 4911776866405166}
   m_Father: {fileID: 4126147863612744}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4419676322342430
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1612074281687830}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.357, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4990854100330640}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4435198448774606
@@ -1747,19 +1760,6 @@ Transform:
   m_Father: {fileID: 4284810108492502}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4964301595720210
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1479890421790290}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.94, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4990854100330640}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4980248373329788
 Transform:
   m_ObjectHideFlags: 1
@@ -1823,10 +1823,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1314697647327706}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 31.02956, y: -19.74574, z: -523.28314}
+  m_LocalPosition: {x: 139.00018, y: -19.74574, z: -428.79562}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
-  - {fileID: 4964301595720210}
+  - {fileID: 4419676322342430}
   - {fileID: 4637096785974650}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1918,9 +1918,11 @@ MonoBehaviour:
   PlayerBullet: 25
   PlayerGrenade: 50
   Scream: {fileID: 8300000, guid: b27136d7d807743ef9478aa332f843b8, type: 3}
-  bloodSpawner: {fileID: 4964301595720210}
+  bloodSpawner: {fileID: 4419676322342430}
   bloodSquirt: {fileID: 1343647497694878, guid: 927afb6b152964627a2f85cdb3108752,
     type: 2}
+  hitSpawner: {fileID: 4419676322342430}
+  hitSquirt: {fileID: 1343647497694878, guid: ffc05b67c6347432bacf415e9e2a5b06, type: 2}
 --- !u!135 &135724798542276014
 SphereCollider:
   m_ObjectHideFlags: 1
