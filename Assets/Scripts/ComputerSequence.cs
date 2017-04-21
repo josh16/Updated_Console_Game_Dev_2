@@ -15,6 +15,15 @@ public class ComputerSequence : MonoBehaviour {
   
     public GameObject ScreenOn;
 
+    public bool win = false;
+
+    public GameObject ScreenOnMid;
+    public GameObject ScreenOnL;
+    public GameObject ScreenOnR;
+    public GameObject ScreenOnMain;
+    public GameObject Gate1;
+    public GameObject Gate2;
+
 
     // Use this for initialization
     void Start()
@@ -31,18 +40,24 @@ public class ComputerSequence : MonoBehaviour {
         {
             timer += Time.deltaTime;
         }
+        if (timer >= 5)
+        {
+
+            ScreenOn.SetActive(true);
+        }
+        if (ScreenOnR.activeSelf&& ScreenOnL.activeSelf && ScreenOnMid.activeSelf && ScreenOnMain.activeSelf)
+        {
+            win = true;
+            Destroy(Gate1);
+            Destroy(Gate2);
+        }
+        
     }
 
 
     void OnTriggerEnter(Collider other)
     {
         timerCheck = true;
-        if(timer >= 10)
-        {
-            timer = 10;
-            ScreenOn.SetActive(true);
-        }
-
     }
 
    
@@ -55,7 +70,7 @@ public class ComputerSequence : MonoBehaviour {
 
     public IEnumerator CountD()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
        
     }
 }
