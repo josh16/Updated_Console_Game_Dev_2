@@ -37,6 +37,8 @@ public class Movement : NetworkBehaviour
 	public GameObject grenadePrefab;
 	public Transform grenadeSpawn;
 	public float grenadeSpeed;
+    public int grenadecount = 5;
+    public bool cannade = true;
 
 	//Grenade text references
 	public float delayGrenadeTime = 5.0f;
@@ -90,6 +92,10 @@ public class Movement : NetworkBehaviour
         {
             CancelInvoke("CmdKeyboardInput");
         }
+        if(grenadecount <= 0)
+        {
+            cannade = false;
+        }
 
 
         if (Input.GetButtonDown ("PS4_R1")) {
@@ -107,7 +113,7 @@ public class Movement : NetworkBehaviour
 
 		if (Input.GetButtonDown ("PS4_L1")) {
 
-			CmdGrenade ();
+            if (cannade == true) { CmdGrenade(); }
 		}
 
 		//if(isLocalPlayer)
@@ -189,19 +195,21 @@ public class Movement : NetworkBehaviour
 	[Command]
     void CmdGrenade()
     {
-			var grenade = (GameObject)Instantiate(
-				grenadePrefab,
-				grenadeSpawn.position,
-				grenadeSpawn.rotation);
+            var grenade = (GameObject)Instantiate(
+                grenadePrefab,
+                grenadeSpawn.position,
+                grenadeSpawn.rotation);
 
-			grenade.GetComponent<Rigidbody>().velocity = grenade.transform.forward * grenadeSpeed;
+            grenade.GetComponent<Rigidbody>().velocity = grenade.transform.forward * grenadeSpeed;
 
-			NetworkServer.Spawn(grenade);
+            NetworkServer.Spawn(grenade);
 
-			Destroy(grenadePrefab,2.0f);
+        grenadecount--;
 
-			
-        delayGrenadeTime += Time.deltaTime;
+            Destroy(grenadePrefab, 2.0f);
+
+
+            delayGrenadeTime += Time.deltaTime;
     }
     
 
