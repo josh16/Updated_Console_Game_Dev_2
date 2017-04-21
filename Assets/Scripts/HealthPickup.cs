@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class HealthPickup : MonoBehaviour {
 
-
+	public PlayerHealth playerHealth;
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject.tag == "Player")
+		if(other.gameObject.tag == "Player" && playerHealth.currentHealth < playerHealth.maxHealth)
 		{
 			Destroy (this.gameObject);
 
