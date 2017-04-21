@@ -101,7 +101,7 @@ public class RunePlayerScript : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		Debug.Log (other.name);
-		if(other.gameObject.CompareTag("GreenRune"))
+		if(other.gameObject.CompareTag("GreenRune") && m_bluePickedUp == false && m_yellowPickedUp == false)
 		{
 			// destroys rune and makes bool true
 			Destroy(other.gameObject);
@@ -116,7 +116,7 @@ public class RunePlayerScript : MonoBehaviour
 
 			Debug.Log("green rune picked up");
 		}
-		if (other.gameObject.CompareTag("BlueRune"))
+		if (other.gameObject.CompareTag("BlueRune") && m_greenPickedUp == false && m_yellowPickedUp == false)
 		{
 			// destroys rune and makes bool true
 			Destroy(other.gameObject);
@@ -130,7 +130,7 @@ public class RunePlayerScript : MonoBehaviour
 
 			Debug.Log("blue rune picked up");
 		}
-		if (other.gameObject.CompareTag("YellowRune"))
+		if (other.gameObject.CompareTag("YellowRune") && m_greenPickedUp == false && m_bluePickedUp == false)
 		{
 			// destroys rune and makes bool true
 			Destroy(other.gameObject);
