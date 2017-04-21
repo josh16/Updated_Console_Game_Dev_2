@@ -9,7 +9,9 @@ public class PlayerHealth : NetworkBehaviour {
 	//Health variables
 	public const int maxHealth = 100;
 	public const int healthPack = 60;
+	public float playerLives = 3;
 
+	public Text lives;
 
 	//Health Audio
 	public AudioClip medicalKit;
@@ -19,6 +21,9 @@ public class PlayerHealth : NetworkBehaviour {
 	public int currentHealth = maxHealth;
 	public RectTransform healthbar;
 
+
+	public Transform hitSpawner;
+	public GameObject hitSquirt;
 
 	//Take Damage Function
 	public void TakeDamage(int amount)
@@ -33,6 +38,8 @@ public class PlayerHealth : NetworkBehaviour {
 			currentHealth = 0;
 
 			currentHealth = maxHealth;
+
+			playerLives -= 1;
 
 			// called on the Server, but invoked on the Clients
 			RpcRespawn();
@@ -58,18 +65,11 @@ public class PlayerHealth : NetworkBehaviour {
 			AudioSource.PlayClipAtPoint (medicalKit, transform.position);
 				
 			}
-	
-		/*
-		if(other.gameObject.tag == "Enemy")
-			{
 
-			currentHealth -= enemyDmg;
-				
-					
-			}
-	*/
-}
-
+		if (other.CompareTag ("Enemy")) {
+			hitSquirt = Instantiate (hitSquirt, hitSpawner.position, hitSpawner.rotation);
+		}
+	}
 
 
 
@@ -93,12 +93,18 @@ public class PlayerHealth : NetworkBehaviour {
 	{
 
 		currentHealth = maxHealth;
+		lives = GameObject.Find("Canvas").transform.FindChild("Lives").GetComponent<Text>();
 	}
 
     void Update()
     {
+		lives.text = "Lives: " + playerLives;
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
+
+		if (playerLives == 0) {
+			Application.LoadLevel ("GameOver");
+		}
     }
 
 

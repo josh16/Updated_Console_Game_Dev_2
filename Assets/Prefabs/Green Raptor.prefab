@@ -1902,7 +1902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6305a97a4be44ff3b338555dff0c793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 4262603783436600, guid: a89c3d3c660b63a4a9fc2e78467de418, type: 2}
 --- !u!114 &114723512349685630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1914,8 +1914,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c77fc837e4cc4c2fb337c0cb3475549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  PlayerBullet: 25
+  currentHealth: 200
+  PlayerBullet: 20
   PlayerGrenade: 50
   Scream: {fileID: 8300000, guid: b27136d7d807743ef9478aa332f843b8, type: 3}
   bloodSpawner: {fileID: 4419676322342430}
@@ -1923,6 +1923,7 @@ MonoBehaviour:
     type: 2}
   hitSpawner: {fileID: 4419676322342430}
   hitSquirt: {fileID: 1343647497694878, guid: ffc05b67c6347432bacf415e9e2a5b06, type: 2}
+  hitTime: 0
 --- !u!135 &135724798542276014
 SphereCollider:
   m_ObjectHideFlags: 1

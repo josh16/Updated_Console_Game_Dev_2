@@ -6,6 +6,8 @@ using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour{
 
+
+
 	void Update()
 	{
 
@@ -24,4 +26,7 @@ public class PlayerController : NetworkBehaviour{
 	
 	
 	}
+
+
+
 }
