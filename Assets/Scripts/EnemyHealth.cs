@@ -21,9 +21,9 @@ public class EnemyHealth : MonoBehaviour
 	public Transform hitSpawner;
 	public GameObject hitSquirt;
 
+	private PlayerHealth playerHealth;
 
-
-
+	public float hitTime;
 	//Audio files
 	//public AudioClip sound2;
 	//public AudioClip Explosion;
@@ -72,7 +72,7 @@ public class EnemyHealth : MonoBehaviour
 		}
 
 
-		//Raptop Death
+		//Raptor Death
 		if (currentHealth <= 0.0f) 
 		{
 			//AudioSource.PlayClipAtPoint(Explosion,transform.position);
@@ -88,12 +88,11 @@ public class EnemyHealth : MonoBehaviour
 	
 
 		// Colliding with Player
-		if(raptor.gameObject.CompareTag("Player"))
+		if(raptor.CompareTag ("Player"))
 		{
 
-			hitSquirt = Instantiate (hitSquirt, hitSpawner.position, hitSpawner.rotation);
+			playerHealth.currentHealth -= 5;
 
-			Destroy (this.gameObject);
 
 			//Explosion.PlayOneShot(sound2, 0.8f);
 			//StartCoroutine (Delayblast());
@@ -102,10 +101,9 @@ public class EnemyHealth : MonoBehaviour
 		}
 
 
+
+
 	}
-
-
-
 
 
 }
