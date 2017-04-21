@@ -13,8 +13,9 @@ public class Trap : MonoBehaviour {
         if (health != null)
         {
 
-            health.TakeDamage(100);
+			health.TakeDamage(50);
 
         }
+
     }
 }

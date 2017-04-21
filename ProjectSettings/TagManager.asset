@@ -25,6 +25,7 @@ TagManager:
   - BlueRuneDropOff
   - GreenRuneDropOff
   - NextLevel
+  - Pit
   layers:
   - Default
   - TransparentFX

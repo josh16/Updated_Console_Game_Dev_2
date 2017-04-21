@@ -7,18 +7,25 @@ using UnityEngine.Networking;
 public class PlayerHealth : NetworkBehaviour {
 
 	//Health variables
-	public const int maxHealth = 100;
+	public int maxHealth = 100;
 	public const int healthPack = 60;
+	public float playerLives = 3;
 
+	public Text lives;
 
 	//Health Audio
 	public AudioClip medicalKit;
 
 
 	[SyncVar(hook = "OnChangeHealth")]
-	public int currentHealth = maxHealth;
+	public int currentHealth;
 	public RectTransform healthbar;
 
+
+	public Transform hitSpawner;
+	public GameObject hitSquirt;
+
+	public GameObject[] enemies;
 
 	//Take Damage Function
 	public void TakeDamage(int amount)
@@ -34,6 +41,8 @@ public class PlayerHealth : NetworkBehaviour {
 
 			currentHealth = maxHealth;
 
+			playerLives -= 1;
+			DestroyAllEnemies ();
 			// called on the Server, but invoked on the Clients
 			RpcRespawn();
 		}
@@ -55,21 +64,15 @@ public class PlayerHealth : NetworkBehaviour {
 		if(other.gameObject.tag == "healthPickup" && currentHealth < maxHealth)
 			{
 				currentHealth += healthPack;
+			Destroy (other.gameObject);
 			AudioSource.PlayClipAtPoint (medicalKit, transform.position);
 				
 			}
-	
-		/*
-		if(other.gameObject.tag == "Enemy")
-			{
 
-			currentHealth -= enemyDmg;
-				
-					
-			}
-	*/
-}
-
+		if (other.CompareTag ("Enemy")) {
+			hitSquirt = Instantiate (hitSquirt, hitSpawner.position, hitSpawner.rotation);
+		}
+	}
 
 
 
@@ -93,13 +96,26 @@ public class PlayerHealth : NetworkBehaviour {
 	{
 
 		currentHealth = maxHealth;
+		lives = GameObject.Find("Canvas").transform.FindChild("Lives").GetComponent<Text>();
 	}
 
     void Update()
     {
+		lives.text = "Lives: " + playerLives;
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
+
+		if (playerLives == 0) {
+			Application.LoadLevel ("GameOver");
+		}
     }
 
+	void DestroyAllEnemies(){
+		enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+		for(var i = 0; i < enemies.Length; i++)
+		{
+			Destroy (enemies [i]);
+		}
+	}
 
 }

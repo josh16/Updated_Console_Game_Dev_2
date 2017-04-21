@@ -72,7 +72,7 @@ public class Movement : NetworkBehaviour
     // Update is called once per frame
 	void Update () 
 	{
-		//grenadeText.text = "Grenades: ";
+		
 
 		//check for isLocalPlayer in the Update function, so that only the local player processes input.
 		if (!isLocalPlayer)
@@ -216,7 +216,7 @@ public class Movement : NetworkBehaviour
 			//Scream.PlayOneShot(sound, 0.8f);
 			AudioSource.PlayClipAtPoint(hit,transform.position);
 			//Destroy (this.gameObject);
-			Debug.Log("Zambie hit!!");
+			Debug.Log("Enemy hit!!");
 		}
 	
 
@@ -230,7 +230,7 @@ public class Movement : NetworkBehaviour
 
 			if(m_runeCounter == 3)
 			{
-				Debug.Log ("all runes collected");
+				Debug.Log ("All runes collected");
 				// transition to next scene
 				//SceneManager.LoadScene("");
 				// scene name goes inside the ""
@@ -238,8 +238,6 @@ public class Movement : NetworkBehaviour
 
 
 		}
-
-
 
 
 
