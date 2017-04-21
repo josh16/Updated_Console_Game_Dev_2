@@ -13,10 +13,13 @@ public class EnemyHealth : MonoBehaviour
 	//public AudioClip Explosion;
 	public AudioClip Scream;
 
-	//Rapto Death Particle effect
+	//Raptor Death Particle effect
 	public Transform bloodSpawner;
 	public GameObject bloodSquirt;
 
+	//Raptor hits Player Particle effect
+	public Transform hitSpawner;
+	public GameObject hitSquirt;
 
 
 
@@ -27,9 +30,6 @@ public class EnemyHealth : MonoBehaviour
 
 	//Explosion Particle effect here
 	//public GameObject Explode;
-
-	//Josh's Script
-
 
 
 	// Use this for initialization
@@ -87,10 +87,14 @@ public class EnemyHealth : MonoBehaviour
 	
 	
 
+		// Colliding with Player
 		if(raptor.gameObject.CompareTag("Player"))
 		{
-			
+
+			hitSquirt = Instantiate (hitSquirt, hitSpawner.position, hitSpawner.rotation);
+
 			Destroy (this.gameObject);
+
 			//Explosion.PlayOneShot(sound2, 0.8f);
 			//StartCoroutine (Delayblast());
 			//Destroy (this.gameObject);
